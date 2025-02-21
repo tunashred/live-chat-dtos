@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.apache.commons.codec.digest.DigestUtils;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
@@ -13,4 +14,9 @@ import lombok.experimental.FieldDefaults;
 public class User {
     String name;
     String userID;
+
+    public User(String chatName) {
+        this.name = chatName;
+        this.userID = DigestUtils.sha256Hex(this.name);
+    }
 }

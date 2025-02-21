@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.apache.commons.codec.digest.DigestUtils;
+
+import java.util.Objects;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @AllArgsConstructor
@@ -13,4 +16,9 @@ import lombok.experimental.FieldDefaults;
 public class GroupChat {
     String chatName;
     String chatID;
+
+    public GroupChat(String chatName) {
+        this.chatName = chatName;
+        this.chatID = DigestUtils.sha256Hex(this.chatName);
+    }
 }
