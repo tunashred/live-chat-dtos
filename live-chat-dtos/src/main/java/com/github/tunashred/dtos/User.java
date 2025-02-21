@@ -8,7 +8,6 @@ import lombok.experimental.FieldDefaults;
 import org.apache.commons.codec.digest.DigestUtils;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class User {

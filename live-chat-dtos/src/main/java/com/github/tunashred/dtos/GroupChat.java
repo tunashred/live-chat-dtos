@@ -10,7 +10,6 @@ import org.apache.commons.codec.digest.DigestUtils;
 import java.util.Objects;
 
 @FieldDefaults(level = AccessLevel.PRIVATE)
-@AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class GroupChat {
