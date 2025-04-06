@@ -4,26 +4,25 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
-@Data
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class MessageInfo {
-    GroupChat groupChat;
-    User user;
+public class UserMessage {
+    String username;
     String message;
 
-    static public String serialize(MessageInfo message) throws JsonProcessingException {
+    static public String serialize(UserMessage userMessage) throws JsonProcessingException {
         ObjectMapper writer = new ObjectMapper();
-        return writer.writeValueAsString(message);
+        return writer.writeValueAsString(userMessage);
     }
 
-    static public MessageInfo deserialize(String messageSerialized) throws JsonProcessingException {
+    static public UserMessage deserialize(String userMessageSerialized) throws JsonProcessingException {
         ObjectMapper reader = new ObjectMapper();
-        return reader.readValue(messageSerialized, MessageInfo.class);
+        return reader.readValue(userMessageSerialized, UserMessage.class);
     }
 }
